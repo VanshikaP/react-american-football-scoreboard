@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -7,6 +7,35 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(1);
+  // useEffect(() => {
+  //   let timer = document.querySelector('.timer');
+    
+  //   let seconds = '0';
+  //   let minutes = '0';
+  //   timer.textContent = seconds + ':' + minutes;
+
+  //   var timerUpdate = setInterval(() => {
+  //     if(seconds !== 60){
+  //       seconds ++;
+  //     } else {
+  //       seconds = 0;
+  //       if(minutes!= 20){
+  //         minutes++;
+  //       } else {
+  //         clearInterval(timerUpdate);
+  //       }
+  //     }
+  //   }, 1000);
+  // })
+  function handler(teamName, amount){
+    if (teamName === 'Lions'){
+      return setHomeScore(homeScore + amount);
+    } else if(teamName === 'Tigers'){
+      return setAwayScore(awayScore + amount);
+    } else {
+      return 'Invalid team name';
+    }
+  }
   return (
     <div className="container">
       <section className="scoreboard">
