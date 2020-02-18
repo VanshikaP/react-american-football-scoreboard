@@ -6,27 +6,24 @@ import BottomRow from "./BottomRow";
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [homeScore, setHomeScore] = useState(0);
-  const [awayScore, setAwayScore] = useState(1);
-  // useEffect(() => {
-  //   let timer = document.querySelector('.timer');
-    
-  //   let seconds = '0';
-  //   let minutes = '0';
-  //   timer.textContent = seconds + ':' + minutes;
+  const [awayScore, setAwayScore] = useState(0);
+  const [secondsTimer, updateSecondsTimer] = useState(0);
+  const [minutesTimer, updateMinutesTimer] = useState(0);
 
-  //   var timerUpdate = setInterval(() => {
-  //     if(seconds !== 60){
-  //       seconds ++;
-  //     } else {
-  //       seconds = 0;
-  //       if(minutes!= 20){
-  //         minutes++;
-  //       } else {
-  //         clearInterval(timerUpdate);
-  //       }
-  //     }
-  //   }, 1000);
-  // })
+  useEffect(() => {
+    if(secondsTimer < 60){
+      setTimeout(() => updateSecondsTimer(secondsTimer+1), 1000);
+    } else {
+      updateSecondsTimer(0);
+    }
+    if(minutesTimer < 15){
+      setTimeout(() => {
+        updateMinutesTimer(minutesTimer+1)
+      }, 60000);
+    } else {
+      updateMinutesTimer(0);
+    }
+  })
   function handler(teamName, amount){
     if (teamName === 'Lions'){
       return setHomeScore(homeScore + amount);
@@ -47,7 +44,7 @@ function App() {
 
             <div className="home__score">{homeScore}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{minutesTimer}:{secondsTimer}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayScore}</div>

@@ -2,10 +2,7 @@ import React, {useState} from "react";
 import "./App.css";
 
 const BottomRow = () => {
-  // const [down, setDown] = useState(0);
-  // const [toGo, setToGo] = useState(1);
-  // const [ballOn, setBallOn] = useState(2);
-  const [quarter, setQuarter] = useState(3);
+  const [quarter, setQuarter] = useState(1);
   return (
     <div className="bottomRow">
       <div className="down">
